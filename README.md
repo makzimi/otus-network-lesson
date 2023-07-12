@@ -1,2 +1,2 @@
-# otus-network-lesson
-Otus. Android Professional. Flow lesson.
+# Otus Network Lesson
+Otus. Android Professional. Network lesson.
