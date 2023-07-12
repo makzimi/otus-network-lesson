@@ -2,6 +2,11 @@ package ru.otus.network.di
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,7 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.otus.network.data.RAMRetrofitService
 import ru.otus.network.domain.CharactersRepository
 import ru.otus.network.presentation.CustomViewModelFactory
-import ru.otus.network.presentation.finish.FinishCustomViewModelFactory
 
 class Injector(private val context: Context) {
 
@@ -39,7 +43,16 @@ class Injector(private val context: Context) {
         return CustomViewModelFactory(provideRepository())
     }
 
-    fun provideFinishViewModelFactory(): ViewModelProvider.Factory {
-        return FinishCustomViewModelFactory(provideRepository())
+    private fun provideKtorClient(): HttpClient {
+        return HttpClient(CIO) {
+            install(ContentNegotiation) {
+                json(
+                    Json {
+                        prettyPrint = true
+                        isLenient = true
+                    }
+                )
+            }
+        }
     }
 }

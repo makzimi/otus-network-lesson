@@ -2,7 +2,6 @@ package ru.otus.network.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,29 +12,17 @@ class CharactersViewModel(
     private val repository: CharactersRepository
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(initialValue())
-    val state: StateFlow<CharactersState> = _state.asStateFlow() // read only
+    private val _state = MutableStateFlow(loadingState())
+    val state: StateFlow<CharactersState> = _state.asStateFlow()
 
-    private val sharedFlow = MutableSharedFlow<CharactersState>(
-        replay = 0, extraBufferCapacity = 1,
+    private fun loadingState() = CharactersState(
+        items = listOf(),
+        isLoading = true,
+        isError = false,
     )
-
-    private fun initialValue(): CharactersState {
-        return CharactersState(
-            items = listOf(),
-            isLoading = true,
-            isError = false,
-        )
-    }
 
     init {
         requestCharacters()
-
-        viewModelScope.launch {
-            sharedFlow.emit(initialValue())
-        }
-
-        sharedFlow.tryEmit(initialValue())
     }
 
     fun refresh() {

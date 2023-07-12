@@ -59,7 +59,7 @@ class CharactersFragment : Fragment() {
 
     private fun subscribeUI() {
         viewLifecycleOwner.lifecycleScope.launch {
-            lifecycle.repeatOnLifecycle(State.STARTED) {
+            repeatOnLifecycle(State.STARTED) {
                 viewModel.state.collect { state: CharactersState ->
                     when {
                         state.isError -> Toast.makeText(context, "Error", Toast.LENGTH_LONG).show()
