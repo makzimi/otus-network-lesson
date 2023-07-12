@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">OtusAndroidNetwork</string>
+    <string name="message_empty_string">List is empty</string>
+</resources>
