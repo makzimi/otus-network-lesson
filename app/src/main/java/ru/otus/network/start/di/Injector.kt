@@ -10,14 +10,6 @@ import ru.otus.network.start.presentation.CustomViewModelFactory
 
 class InjectorStartImpl(private val context: Context): Injector {
 
-    private fun provideOkHttpClient(): OkHttpClient {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BASIC
-        return OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-    }
-
     private fun provideRepository(): CharactersRepository {
         return CharactersRepository()
     }
