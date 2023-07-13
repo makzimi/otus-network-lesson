@@ -102,14 +102,7 @@ class InjectorFinishImpl(private val context: Context): Injector {
     private fun provideKtorClient_Android(): HttpClient {
         return HttpClient(Android) {
             install(ContentNegotiation) {
-                json(
-                    Json {
-                        prettyPrint = true
-                        isLenient = true
-                        ignoreUnknownKeys = true
-                        explicitNulls = false
-                    }
-                )
+                json(provideJson())
             }
         }
     }
@@ -121,14 +114,7 @@ class InjectorFinishImpl(private val context: Context): Injector {
             }
 
             install(ContentNegotiation) {
-                json(
-                    Json {
-                        prettyPrint = true
-                        isLenient = true
-                        ignoreUnknownKeys = true
-                        explicitNulls = false
-                    }
-                )
+                json(provideJson())
             }
         }
     }
