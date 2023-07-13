@@ -1,6 +1,6 @@
-package ru.otus.network.presentation
+package ru.otus.network.finish.presentation
 
-import ru.otus.network.domain.RaMCharacter
+import ru.otus.network.finish.domain.RaMCharacter
 
 data class CharactersState(
     val items: List<RaMCharacter>,

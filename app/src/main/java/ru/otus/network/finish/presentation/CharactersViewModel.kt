@@ -1,11 +1,11 @@
-package ru.otus.network.presentation
+package ru.otus.network.finish.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import ru.otus.network.domain.CharactersRepository
+import ru.otus.network.finish.domain.CharactersRepository
 import kotlinx.coroutines.launch
 
 class CharactersViewModel(

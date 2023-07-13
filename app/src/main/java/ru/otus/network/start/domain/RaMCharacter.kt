@@ -1,4 +1,4 @@
-package ru.otus.network.domain
+package ru.otus.network.start.domain
 
 data class RaMCharacter(
     val id: Long,

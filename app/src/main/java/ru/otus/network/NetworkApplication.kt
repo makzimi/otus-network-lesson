@@ -1,10 +1,13 @@
 package ru.otus.network
 
 import android.app.Application
-import ru.otus.network.di.Injector
-import ru.otus.network.di.InjectorProvider
+import ru.otus.network.finish.di.InjectorFinishImpl
+import ru.otus.network.start.di.InjectorStartImpl
 
 class NetworkApplication : Application(), InjectorProvider {
+
+    // Change this to switch between start and finish packages
+    val isStartPackage = true
 
     private lateinit var _injector: Injector
 
@@ -14,6 +17,10 @@ class NetworkApplication : Application(), InjectorProvider {
     override fun onCreate() {
         super.onCreate()
 
-        _injector = Injector(this)
+        _injector = if (isStartPackage) {
+            InjectorStartImpl(this)
+        } else {
+            InjectorFinishImpl(this)
+        }
     }
 }

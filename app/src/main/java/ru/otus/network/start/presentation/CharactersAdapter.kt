@@ -1,11 +1,11 @@
-package ru.otus.network.presentation
+package ru.otus.network.start.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import ru.otus.network.databinding.ItemGalleryBinding
-import ru.otus.network.domain.RaMCharacter
+import ru.otus.network.start.domain.RaMCharacter
 
 class CharactersAdapter : ListAdapter<RaMCharacter, CharactersViewHolder>(DiffCallback()) {
 

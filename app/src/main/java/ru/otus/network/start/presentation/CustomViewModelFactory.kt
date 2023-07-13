@@ -1,8 +1,8 @@
-package ru.otus.network.presentation
+package ru.otus.network.start.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.otus.network.domain.CharactersRepository
+import ru.otus.network.start.domain.CharactersRepository
 
 class CustomViewModelFactory(private val repository: CharactersRepository) :
     ViewModelProvider.Factory {

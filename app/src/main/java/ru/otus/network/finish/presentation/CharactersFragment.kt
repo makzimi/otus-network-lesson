@@ -1,4 +1,4 @@
-package ru.otus.network.presentation
+package ru.otus.network.finish.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
 import ru.otus.network.databinding.FragmentCharactersBinding
-import ru.otus.network.di.InjectorProvider
+import ru.otus.network.InjectorProvider
 
 class CharactersFragment : Fragment() {
 
