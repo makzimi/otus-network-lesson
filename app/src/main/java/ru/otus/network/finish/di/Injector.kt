@@ -76,16 +76,7 @@ class InjectorFinishImpl(private val context: Context): Injector {
 
     private fun provideKtorClient_CIO(): HttpClient {
         return HttpClient(CIO) {
-            install(ContentNegotiation) {
-                json(
-                    Json {
-                        prettyPrint = true
-                        isLenient = true
-                        ignoreUnknownKeys = true
-                        explicitNulls = false
-                    }
-                )
-            }
+            install(ContentNegotiation) { json(provideJson()) }
 
             install(Logging) {
                 logger = object : Logger {
